@@ -18,9 +18,9 @@ app.use(
 
 //Mongodb Connection
 import mongoose from "mongoose";
-const MONGO_URI: string = <string>process.env.MONGO_URI;
+const DB_URI: string = <string>process.env.DB_URI;
 mongoose
-	.connect(MONGO_URI, {
+	.connect(DB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
