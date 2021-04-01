@@ -1,28 +1,24 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const userSchema: mongoose.Schema<
+const extraUserDataSchema: mongoose.Schema<
 	mongoose.Document<any, {}>,
 	mongoose.Model<any, any>,
 	undefined
 > = new Schema(
 	{
-		fullName: {
+		userId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Users",
+		},
+		ipAddress: {
 			type: String,
 			required: true,
 		},
-		googleUid: {
+		actionType: {
+			// login || logout || refresh
 			type: String,
 			required: true,
-		},
-		emailId: {
-			type: String,
-			required: true,
-		},
-		profileRole: {
-			// can be mentor or mentee
-			type: String,
-			default: "mentee",
 		},
 	},
 	{
@@ -30,4 +26,4 @@ const userSchema: mongoose.Schema<
 	}
 );
 
-module.exports = mongoose.model("Users", userSchema);
+export default mongoose.model("ExtraUserData", extraUserDataSchema);

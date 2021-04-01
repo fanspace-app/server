@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const menteeSchema: mongoose.Schema<
+const clickAnalyticsSchema: mongoose.Schema<
 	mongoose.Document<any, {}>,
 	mongoose.Model<any, any>,
 	undefined
 > = new Schema(
 	{
-		userId: {
+		mentorId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Users",
+		},
+		menteeId: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Users",
 		},
@@ -17,4 +21,4 @@ const menteeSchema: mongoose.Schema<
 	}
 );
 
-module.exports = mongoose.model("Mentees", menteeSchema);
+export default mongoose.model("ClickAnalytics", clickAnalyticsSchema);

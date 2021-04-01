@@ -75,4 +75,4 @@ const mentorSchema: mongoose.Schema<
 	}
 );
 
-module.exports = mongoose.model("Mentors", mentorSchema);
+export default mongoose.model("Mentors", mentorSchema);

@@ -59,4 +59,4 @@ const sessionSchema: mongoose.Schema<
 	}
 );
 
-module.exports = mongoose.model("Sessions", sessionSchema);
+export default mongoose.model("Sessions", sessionSchema);

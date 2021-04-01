@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const loginInfoSchema: mongoose.Schema<
+const menteeSchema: mongoose.Schema<
 	mongoose.Document<any, {}>,
 	mongoose.Model<any, any>,
 	undefined
@@ -11,14 +11,10 @@ const loginInfoSchema: mongoose.Schema<
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Users",
 		},
-		ipAddress: {
-			type: String,
-			required: true,
-		},
 	},
 	{
 		timestamps: true,
 	}
 );
 
-module.exports = mongoose.model("LoginInfo", loginInfoSchema);
+export default mongoose.model("Mentees", menteeSchema);
