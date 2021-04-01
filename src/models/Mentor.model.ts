@@ -57,8 +57,16 @@ const mentorSchema: mongoose.Schema<
 		},
 		mentorCalendarDates: [
 			{
-				type: Date,
-				required: true,
+				date: {
+					type: Date,
+					required: true,
+				},
+				timeSlots: [
+					{
+						type: Date,
+						required: true,
+					},
+				],
 			},
 		],
 	},
