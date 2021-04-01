@@ -16,6 +16,10 @@ app.use(
 	)
 );
 
+//Server Routes
+
+
+
 //Mongodb Connection
 import mongoose from "mongoose";
 const DB_URI: string = <string>process.env.DB_URI;
