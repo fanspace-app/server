@@ -17,7 +17,7 @@ app.enable("trust proxy"); //To log IP Address of the requests
 app.use(morgan_1.default(":date[iso] :remote-addr :method :url :status :res[content-length] - :response-time ms"));
 //Mongodb Connection
 const mongoose_1 = __importDefault(require("mongoose"));
-const DB_URI = process.env.MONGO_URI;
+const DB_URI = process.env.DB_URI;
 mongoose_1.default
     .connect(DB_URI, {
     useNewUrlParser: true,
