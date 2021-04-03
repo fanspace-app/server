@@ -19,6 +19,7 @@ const userSchema: mongoose.Schema<
 			type: String,
 			required: true,
 		},
+
 		profileRole: {
 			// can be mentor or mentee
 			type: String,

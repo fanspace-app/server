@@ -18,7 +18,9 @@ app.use(
 
 //Server Routes
 
+import { handleAuth } from "./routes";
 
+app.use("/api/user", handleAuth);
 
 //Mongodb Connection
 import mongoose from "mongoose";

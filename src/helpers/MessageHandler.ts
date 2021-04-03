@@ -2,10 +2,10 @@ interface returnObject {
 	type: string;
 	status: number;
 	message: string;
-	payload: any;
+	payload: object;
 }
 
-function handleMessage(codeName: string, payload: any): returnObject {
+function handleMessage(codeName: string, payload: object): returnObject {
 	switch (codeName) {
 		case "REQUEST_SUCCESS":
 			return {

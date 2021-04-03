@@ -5,11 +5,4 @@ import Sessions from "./Session.models";
 import ClickAnalytics from "./ClickAnalytics.models";
 import ExtraUserData from "./ExtraUserData.models";
 
-export default {
-	Users,
-	Mentors,
-	Mentees,
-	Sessions,
-	ClickAnalytics,
-	ExtraUserData,
-};
+export { Users, Mentors, Mentees, Sessions, ClickAnalytics, ExtraUserData };
