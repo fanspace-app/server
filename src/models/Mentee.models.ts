@@ -11,6 +11,10 @@ const menteeSchema: mongoose.Schema<
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Users",
 		},
+		fullName: {
+			type: String,
+			required: true,
+		},
 	},
 	{
 		timestamps: true,

@@ -7,14 +7,6 @@ const userSchema: mongoose.Schema<
 	undefined
 > = new Schema(
 	{
-		fullName: {
-			type: String,
-			required: true,
-		},
-		googleUid: {
-			type: String,
-			required: true,
-		},
 		emailId: {
 			type: String,
 			required: true,

@@ -11,6 +11,10 @@ const mentorSchema: mongoose.Schema<
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Users",
 		},
+		fullName: {
+			type: String,
+			required: true,
+		},
 		slug: {
 			type: String,
 			required: true,
@@ -33,42 +37,54 @@ const mentorSchema: mongoose.Schema<
 			type: String,
 			required: true,
 		},
-		socialWebLinks: [
-			{
-				type: String,
-				required: true,
-			},
-		],
+		// socialWebLinks: [
+		// 	{
+		// 		type: String,
+		// 		required: true,
+		// 	},
+		// ],
 		profileImagesLinks: {
 			profilePic: {
 				type: String,
 				required: true,
 			},
-			coverImageLink: {
-				type: String,
-				required: true,
-			},
-			sampleImagesLinks: [
-				{
-					type: String,
-					required: true,
-				},
-			],
+			// coverImageLink: {
+			// 	type: String,
+			// 	required: true,
+			// },
+			// sampleImagesLinks: [
+			// 	{
+			// 		type: String,
+			// 		required: true,
+			// 	},
+			// ],
 		},
-		netMentorRating: {
-			type: Number,
-			default: null,
-		},
+		// netMentorRating: {
+		// 	type: Number,
+		// 	default: null,
+		// },
 		mentorCalendarDates: [
 			{
+				dateSlotId: {
+					type: mongoose.Schema.Types.ObjectId,
+				},
 				date: {
 					type: Date,
 					required: true,
 				},
 				timeSlots: [
 					{
-						type: Date,
-						required: true,
+						timeSlotId: {
+							type: mongoose.Schema.Types.ObjectId,
+						},
+						time: {
+							type: Date,
+							required: true,
+						},
+						isBooked: {
+							type: Boolean,
+							default: false,
+						},
 					},
 				],
 			},

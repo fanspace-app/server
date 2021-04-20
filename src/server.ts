@@ -18,9 +18,10 @@ app.use(
 
 //Server Routes
 
-import { handleAuth } from "./routes";
+import { handleUser, handleSessions } from "./routes";
 
-app.use("/api/user", handleAuth);
+app.use("/api/user", handleUser);
+app.use("/api/session", handleSessions);
 
 //Mongodb Connection
 import mongoose from "mongoose";

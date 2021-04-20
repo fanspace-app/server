@@ -17,9 +17,9 @@ interface reqBody {
 }
 
 async function handleAuth(req: Request, res: Response, next: NextFunction) {
-	let { fullName, googleUid, emailId, slug }: reqBody = req.body;
+	let { fullName, emailId }: reqBody = req.body;
 
-	if (!fullName || !googleUid || !emailId || !slug) {
+	if (!fullName || !emailId) {
 		const errorObj: messageHandlerObject = handleMessage(
 			"INVALID_REQUEST_SYNTAX",
 			{}
@@ -31,12 +31,12 @@ async function handleAuth(req: Request, res: Response, next: NextFunction) {
 	emailId = emailId.toLowerCase();
 
 	try {
-		const isUserExisting = await Users.findOne({ googleUid });
-		if (isUserExisting) {
-			const token: string = signJWT(isUserExisting);
+		const existingUser = await Users.findOne({ emailId });
+		if (existingUser) {
+			const token: string = signJWT(existingUser);
 			let payloadObject: object = {
 				token: token,
-				user: isUserExisting,
+				user: existingUser,
 			};
 			const messageObj: messageHandlerObject = handleMessage(
 				"REQUEST_SUCCESS",
@@ -45,11 +45,12 @@ async function handleAuth(req: Request, res: Response, next: NextFunction) {
 			return res.status(messageObj.status).json(messageObj);
 		} else {
 			//Create a mentee by default
-			const newMentee = new Users({ fullName, googleUid, emailId });
+			const newMentee = new Users({ emailId });
 			try {
 				const savedMenteeInUsersTable = await newMentee.save();
 				const addToMenteeTable = new Mentees({
 					userId: savedMenteeInUsersTable._id,
+					fullName: fullName,
 				});
 				const savedMentee = await addToMenteeTable.save();
 				const token: string = signJWT(savedMenteeInUsersTable);
@@ -70,5 +71,7 @@ async function handleAuth(req: Request, res: Response, next: NextFunction) {
 		return res.status(500).json({ error: err });
 	}
 }
+
+// async function createMentor(req: Request, res: Response, next: NextFunction) {}
 
 export { handleAuth };

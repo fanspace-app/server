@@ -1,3 +1,4 @@
-import handleAuth from "./Auth.routes";
+import handleUser from "./User.routes";
+import handleSessions from "./Session.routes";
 
-export { handleAuth };
+export { handleUser, handleSessions };
